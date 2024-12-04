@@ -1,8 +1,17 @@
+import {HashRouter, Routes, Route} from "react-router-dom"
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Register from "./components/Register";
+
 function App() {
   return (
-    <>
-       <h2>React Dashboard App v1.0.0</h2>
-    </>
+    <HashRouter> 
+      <Routes>       
+        <Route path="/" element={<Home/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
+      </Routes>
+    </HashRouter> 
   );
 }
 
