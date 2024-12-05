@@ -6,6 +6,9 @@ function Login() {
          <h2>Login</h2>
          <p>
             <Link to="/">Home</Link>
+         </p>                  
+         <p>
+            <Link to="/dashboard">Dashboard</Link>
          </p>         
          <p>
             <Link to="/register">register</Link>
