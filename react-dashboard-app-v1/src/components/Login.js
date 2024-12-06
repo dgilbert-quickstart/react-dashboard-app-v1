@@ -16,7 +16,10 @@ function Login() {
       const _username = txtusername.current.value;
       const _passsword = txtpassword.current.value; //optionally: encrypt password
 
+      //## for local testing use localhst url
       const _localhost_url = `http://localhost:8080/login/${_username}/${_passsword}`;
+
+      //## when publishing code to github pages use replit url 
       const _replit_url = `https://d4a4b615-8c0c-4341-adae-e90a82bcb576-00-2xx2fade5wfsh.worf.replit.dev/login/${_username}/${_passsword}`;
 
       try {
@@ -40,7 +43,10 @@ function Login() {
 
          //send request to backend api 
 
+         //## for local testing use localhst url
+         //## when publishing code to github pages use replit url 
          fetch(_localhost_url)
+         //fetch(_replit_url)
          .then((res)=>res.json())
          .then((data)=> {
 
