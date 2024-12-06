@@ -54,10 +54,15 @@ function Login() {
 
              //if successful login
              //-- redirect to dashboard          
-    
-             //naviagete to dashboard 
-             navigate("/dashboard",{replace:true});
-    
+
+            if(data.login === true)
+            {
+                  //naviagete to dashboard 
+                  navigate("/dashboard",{replace:true});
+            }    
+
+            setMsg(data.msg)
+
          })
          .catch((error)=>{
              setMsg("* request error");

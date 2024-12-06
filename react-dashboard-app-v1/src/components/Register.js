@@ -20,11 +20,7 @@ function Register() {
          _msg = "# handleRegister"
          setMsg(_msg);
 
-         //if valid username and password 
-         //navigate to dashboard 
-         //else: display invalid login message 
-
-         if(txtusername.current.value == null | txtusername.current.value.length == 0)
+         if(txtusername.current.value == null | txtusername.current.value.trim().length == 0)
          {
             _msg = "# please enter a valid username"
             setMsg(_msg)
@@ -62,10 +58,30 @@ function Register() {
          _msg = "user registered"
          setMsg(_msg)
 
-         //send request to backend api 
+         const _localhost_url = `https://localhost:8080/register`;  
+         const _replit_url = `https://d4a4b615-8c0c-4341-adae-e90a82bcb576-00-2xx2fade5wfsh.worf.replit.dev/register`;  
+           
+         const _post_data = {username:txtusername.current.value.trim(), passord:txtpassword.current.value.trim()};
+   
+         fetch(_localhost_url,{method:'POST',
+            headers:{'Content-type':'application/json'},
+            body:JSON.stringify(_post_data)}
+         )
+         .then((res)=>res.json())
+         .then((data)=> {
+           
+            if(data.register === true)
+            {
+                navigate("/dashboard",{replace:true})
+            }
 
-         //navigate to dashboard 
-         navigate("/dashboard",{replace:true})
+            setMsg(data.msg)
+        })
+        .catch((error)=>{
+            setMsg("* request error");
+            console.log("* request error *");
+            console.log(error);
+        });
 
 
       } catch (error) {
