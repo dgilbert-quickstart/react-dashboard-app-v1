@@ -8,40 +8,57 @@ function Login() {
    const txtpassword = useRef("");
 
    const navigate = useNavigate();
-   
+
    const handleLogin = (e) => {
 
       let _msg = "";
+
+      const _username = txtusername.current.value;
+      const _passsword = txtpassword.current.value; //optionally: encrypt password
+
+      const _localhost_url = `http://localhost:8080/login/${_username}/${_passsword}`;
+      const _replit_url = `https://d4a4b615-8c0c-4341-adae-e90a82bcb576-00-2xx2fade5wfsh.worf.replit.dev/login/${_username}/${_passsword}`;
 
       try {
       
          _msg = "# handleLogin"
          setMsg(_msg);
 
-         //if valid username and password 
-         //navigate to dashboard 
-         //else: display invalid login message 
          if(txtusername.current.value == null | txtusername.current.value.length == 0)
          {
             _msg = "# please enter a valid username"
             setMsg(_msg)
-            return false; //stop button click 
+            return false; 
          }
 
          if(txtpassword.current.value == null | txtpassword.current.value.length == 0)
          {
             _msg = "# please enter a valid password"
             setMsg(_msg)
-            return false; //stop button click 
+            return false; 
          }
 
          //send request to backend api 
 
-         _msg = "# user login"
-         setMsg(_msg)
+         fetch(_localhost_url)
+         .then((res)=>res.json())
+         .then((data)=> {
 
-         //naviagete to dashboard 
-         navigate("/dashboard",{replace:true});
+             setMsg(data.msg)
+
+             //if successful login
+             //-- redirect to dashboard          
+    
+             //naviagete to dashboard 
+             navigate("/dashboard",{replace:true});
+    
+         })
+         .catch((error)=>{
+             setMsg("* request error");
+             console.log("* request error *");
+             console.log(error);
+         });
+
 
       } catch (error) {
          
