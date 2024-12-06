@@ -110,15 +110,9 @@ function Register() {
             <p>{msg}</p>
             <p></p>
             <button onClick={handleRegister}>register</button>
-        </div>
-         <p>
-            <Link to="/">Home</Link>
-         </p>         
+        </div>         
          <p>
             <Link to="/login">login</Link>
-         </p>    
-         <p>
-            <Link to="/dashboard">dashboard</Link>
          </p>    
       </>
     );

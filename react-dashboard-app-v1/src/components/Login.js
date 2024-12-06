@@ -93,10 +93,7 @@ function Login() {
         </div>
          <p>
             <Link to="/">Home</Link>
-         </p>                  
-         <p>
-            <Link to="/dashboard">Dashboard</Link>
-         </p>         
+         </p>  
          <p>
             <Link to="/register">register</Link>
          </p>         
