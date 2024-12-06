@@ -66,8 +66,8 @@ function Register() {
          //## for local testing use localhst url
          //## when publishing code to github pages use replit url 
 
-         fetch(_localhost_url,{method:'POST',
-         //fetch(_replit_url,{method:'POST',
+         //fetch(_localhost_url,{method:'POST',
+         fetch(_replit_url,{method:'POST',
             headers:{'Content-type':'application/json'},
             body:JSON.stringify(_post_data)}
          )
