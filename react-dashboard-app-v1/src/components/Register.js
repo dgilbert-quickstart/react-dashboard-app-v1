@@ -61,9 +61,13 @@ function Register() {
          const _localhost_url = `https://localhost:8080/register`;  
          const _replit_url = `https://d4a4b615-8c0c-4341-adae-e90a82bcb576-00-2xx2fade5wfsh.worf.replit.dev/register`;  
            
-         const _post_data = {username:txtusername.current.value.trim(), passord:txtpassword.current.value.trim()};
+         const _post_data = {username:txtusername.current.value.trim(), password:txtpassword.current.value.trim()};
    
+         //## for local testing use localhst url
+         //## when publishing code to github pages use replit url 
+
          fetch(_localhost_url,{method:'POST',
+         //fetch(_replit_url,{method:'POST',
             headers:{'Content-type':'application/json'},
             body:JSON.stringify(_post_data)}
          )
